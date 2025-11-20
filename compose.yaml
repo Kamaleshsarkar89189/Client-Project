@@ -4,6 +4,15 @@ services:
   server:
     build: ./server
     ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: production
+      - "8080:8080"
+    env_file:
+      - ./server/.env
+    container_name: chat_server
+    restart: always
+
+  client:
+    build: ./client
+    ports:
+      - "3000:80"
+    container_name: chat_client
+    restart: always
